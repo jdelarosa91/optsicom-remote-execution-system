@@ -17,6 +17,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.swing.JOptionPane;
+
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
@@ -189,7 +191,10 @@ public class RemoteVersionedJavaShortcut extends JavaApplicationLaunchShortcut {
 			wc.setAttribute(IJavaRemoteServerConfigurationConstants.ATTR_DEBUG_CONFIGURATION, false);
 			
 			//Configuracion de los ficheros fuentes que va a admitir
-			addSourceLocations(wc, new Path(zipFile));
+			if(zipFile!=null){
+				addSourceLocations(wc, new Path(zipFile));
+			}
+			
 			wc.setAttribute(IJavaLaunchConfigurationConstants.ATTR_DEFAULT_SOURCE_PATH, false);
 
 			wc.setAttribute(IJavaLaunchConfigurationConstants.ATTR_ALLOW_TERMINATE,true);

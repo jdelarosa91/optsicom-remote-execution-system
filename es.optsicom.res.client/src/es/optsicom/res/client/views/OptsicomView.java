@@ -17,6 +17,8 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.rmi.Naming;
 
+import javax.swing.JOptionPane;
+
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
@@ -121,8 +123,6 @@ public class OptsicomView extends ViewPart {
 			ScopedPreferenceStore sps = (ScopedPreferenceStore)a.getPreferenceStore();
 			IEclipsePreferences[] iep = sps.getPreferenceNodes(false);
 			
-			
-			
 			String tokens[] = new String[5];
 			
 
@@ -132,7 +132,6 @@ public class OptsicomView extends ViewPart {
 			String port = tokens[2];
 			String user = tokens[3];
 			String password = tokens[4];
-			
 			switch (columnIndex) {
 				case 0:
 					return connectionType;
@@ -313,7 +312,7 @@ public class OptsicomView extends ViewPart {
 						IEclipsePreferences[] iep = sps.getPreferenceNodes(false);
 						String[] keys = iep[0].keys();
 						
-						for (int i=0;i<keys.length;i++){
+						for (int i=0;i<keys.length || i<10;i++){
 							if (keys[i].equals(obj.toString())){
 								//System.out.println("-->Crea el objeto remoto del server");
 								String tokens[] = new String[5];

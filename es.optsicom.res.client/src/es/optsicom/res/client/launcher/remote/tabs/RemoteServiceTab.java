@@ -3,6 +3,8 @@ package es.optsicom.res.client.launcher.remote.tabs;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.swing.JOptionPane;
+
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
@@ -28,7 +30,7 @@ import es.optsicom.res.client.launcher.remote.delegate.IJavaRemoteServerConfigur
 
 
 public class RemoteServiceTab extends AbstractLaunchConfigurationTab {
-
+	
 	private Text txtPassword;
 	private Text txtHost;
 	private Text txtUser;
@@ -228,7 +230,13 @@ public class RemoteServiceTab extends AbstractLaunchConfigurationTab {
 	  	configuration.setAttribute(IJavaRemoteServerConfigurationConstants.ATTR_REMOTE_SERVER, txtHost.getText().trim());
 		configuration.setAttribute(IJavaRemoteServerConfigurationConstants.ATTR_PORT, txtPortRmi.getText().trim());
 		configuration.setAttribute(IJavaRemoteServerConfigurationConstants.ATTR_PASSWORD, txtPassword.getText().trim());
-		configuration.setAttribute(IJavaRemoteServerConfigurationConstants.ATTR_CONNECTION_TYPE, connectionType.getItem(connectionType.getSelectionIndex()).trim());
+		if(connectionType.getSelectionIndex()<0){
+			configuration.setAttribute(IJavaRemoteServerConfigurationConstants.ATTR_CONNECTION_TYPE, "");
+		}
+		else{
+			configuration.setAttribute(IJavaRemoteServerConfigurationConstants.ATTR_CONNECTION_TYPE, connectionType.getItem(connectionType.getSelectionIndex()).trim());
+		}
+		
 		if (mode.equals("debug")){
 			try {
 				configuration.setAttribute(IJavaRemoteServerConfigurationConstants.ATTR_PORT_DEBUG, txtPortDebug.getText().trim());

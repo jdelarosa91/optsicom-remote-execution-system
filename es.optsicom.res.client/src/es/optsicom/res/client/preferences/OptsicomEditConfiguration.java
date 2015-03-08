@@ -240,7 +240,7 @@ public class OptsicomEditConfiguration extends TitleAreaDialog {
 		txtHost.setText(host);
 		
 		Label lblPortRmi = new Label(datosConexion, SWT.LEFT);
-		lblPortRmi.setText("Host RMI port:");
+		lblPortRmi.setText("Port:");
 		txtPort = new Text(datosConexion, SWT.BORDER | SWT.SINGLE);
 		gridDataHV = new GridData();
 		gridDataHV.horizontalSpan = 1;

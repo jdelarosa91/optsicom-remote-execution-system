@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.swing.JOptionPane;
+
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
@@ -54,14 +56,13 @@ public class RemoteVersionedLaunchConfiguration {
 			executor.setMode(mode);
 			executor.setUserSelectedResources(userSelectedResources);
 			executor.setProject(project);
-				
 			RemoteExecutionJob job= new RemoteExecutionJob();
 			job.setRemoteExecution(executor);
 			job.addJobChangeListener(new JobChangeAdapter() {
 				@Override
 				public void done(IJobChangeEvent event) {
 					final IStatus status = event.getResult();
-					if(status.isOK()) {
+					if(status!=null && status.isOK()) {
 						if (configuration != null && "debug".equals(mode)){
 							DebugUITools.launch(configuration, mode);
 						}
@@ -76,8 +77,6 @@ public class RemoteVersionedLaunchConfiguration {
 				}
 			});
 			job.schedule();	
-		
-				
 	}
 	
 }

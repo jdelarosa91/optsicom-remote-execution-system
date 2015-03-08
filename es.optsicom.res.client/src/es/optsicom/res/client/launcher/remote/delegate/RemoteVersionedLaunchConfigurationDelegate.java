@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
 
+import javax.swing.JOptionPane;
+
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
@@ -164,7 +166,7 @@ public class RemoteVersionedLaunchConfigurationDelegate extends AbstractJavaLaun
 
 			selectedResourcesString = configuration.getAttribute(IJavaRemoteServerConfigurationConstants.ATTR_SELECTED_RESOURCES, selectedResourcesString);
 			
-			if(selectedResourcesString.size()>0){
+			if(selectedResourcesString!=null && selectedResourcesString.size()>0){
 				int index = 0;
 				userSelectedResources = new ArrayList();
 				while(index<selectedResourcesString.size()){

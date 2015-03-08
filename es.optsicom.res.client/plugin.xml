@@ -5,37 +5,6 @@
 
  <extension point="org.eclipse.debug.ui.launchShortcuts">
     <shortcut
-          class="es.optsicom.res.client.launcher.local.LocalVersionedJavaShortcut"
-          icon="icons/icon-optsicom-16x16.png"
-          id="es.optsicom.res.client.launcher.local.shortcut"
-          label="Local Java Versioned Application"
-          modes="run,debug">
-          <contextualLaunch>
-           <enablement>
-             <with variable="selection">
-               <count value="1"/>
-                <iterate>
-                 <and>
-                  <adapt type="org.eclipse.jdt.core.IJavaElement">
-                  	<test
-                         forcePluginActivation="true"
-                         property="org.eclipse.jdt.core.isInJavaProject"/>
-                  </adapt>
-               	  <or>
-               	    <test
-                          forcePluginActivation="true"
-                          property="org.eclipse.jdt.launching.hasMain"/>
-               	    <test property="org.eclipse.jdt.launching.isContainer"/>
-               	    <test property="org.eclipse.jdt.launching.isPackageFragment"/>
-               	    <test property="org.eclipse.jdt.launching.isPackageFragmentRoot"/>
-               	  </or>
-                 </and>
-                </iterate>
-               </with>
-           </enablement>
-  		 </contextualLaunch>
-    </shortcut>
-    <shortcut
           class="es.optsicom.res.client.launcher.remote.RemoteVersionedJavaShortcut"
           icon="icons/icon-optsicom-16x16.png"
           id="es.optsicom.res.client.launcher.remote.shortcut"
@@ -79,31 +48,7 @@
        </contextualLaunch>
     </shortcut>
  </extension>
-
- <extension
-       point="org.eclipse.debug.core.launchConfigurationTypes">
-    <launchConfigurationType
-          delegate="org.eclipse.jdt.launching.JavaLaunchDelegate"
-          id="es.optsicom.res.client.launcher.local.launchConfigurationType"
-          migrationDelegate="org.eclipse.jdt.internal.launching.JavaMigrationDelegate"
-          modes="run,debug"
-          name="Local Java Versioned Application"
-          public="true"
-          sourceLocatorId="org.eclipse.jdt.launching.sourceLocator.JavaSourceLookupDirector"
-          sourcePathComputerId="org.eclipse.jdt.launching.sourceLookup.javaSourcePathComputer">
-    </launchConfigurationType>
-    <launchConfigurationType
-          delegate="es.optsicom.res.client.launcher.remote.delegate.RemoteVersionedLaunchConfigurationDelegate"
-          id="es.optsicom.res.client.launcher.remote.launchConfigurationType"
-          migrationDelegate="org.eclipse.jdt.internal.launching.JavaMigrationDelegate"
-          modes="run,debug"
-          name="Remote Java Versioned Application"
-          public="true"
-          sourceLocatorId="org.eclipse.jdt.launching.sourceLocator.JavaSourceLookupDirector"
-          sourcePathComputerId="org.eclipse.jdt.launching.sourceLookup.javaSourcePathComputer">
-    </launchConfigurationType>
- </extension>
- <extension
+<extension
        point="org.eclipse.debug.ui.launchConfigurationTabGroups">
     <launchConfigurationTabGroup
           class="org.eclipse.jdt.internal.debug.ui.launcher.LocalJavaApplicationTabGroup"
@@ -157,11 +102,6 @@
  
  <extension
        point="org.eclipse.debug.ui.launchConfigurationTypeImages">
-    <launchConfigurationTypeImage
-          configTypeID="es.optsicom.res.client.launcher.local.launchConfigurationType"
-          icon="icons/icon-optsicom-16x16.png"
-          id="Local Java Versioned Type Image">
-    </launchConfigurationTypeImage>
     <launchConfigurationTypeImage
           configTypeID="es.optsicom.res.client.launcher.remote.launchConfigurationType"
           icon="icons/icon-optsicom-16x16.png"
